@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Homework 3</title>
+    <title>Part 2 of 3</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
@@ -30,36 +30,56 @@
             var guessCountdown = 10;
             $("#guessnum").html(guessCountdown);
             var chars = "abcdefghijklmnopqurstuvwxyz";
-            var userGuess = [];
-            var compGuess = "empty";
-
+            var userGuess
+            var Guesses = [];
+            var compGuess
 
             // Game begins when button 'starter' is clicked
             //computer chooses a random letter
             $("#starter").on("click", function () {
                 console.log("Button click registered!");
-                console.log(chars.substr(Math.floor(Math.random() * 26), 1));
-                return (chars.substr(Math.floor(Math.random() * 26), 1));
-                return (compGuess);
-                lossScore = 0;
+                compGuess = (chars.substr(Math.floor(Math.random() * 26), 1));
+                console.log(compGuess);
                 winScore = 0;
+                lossScore = 0;
             });
 
+            //hides button after clicked
+            $(document).ready(function () {
+                $("button").click(function () {
+                    $(this).hide();
+                })
+            })
+
             // player then gets 10 chances to choose that same letter - as they type, each letter appears in a list and the 
-            var guess = document.onkeypress = function (event) {
-                $("#guessnum").html(guessCountdown--);
-                if (guessCountdown <= -1) {
-                alert("Round over. +1 Loss.");
-            }
+            document.onkeypress = function (event) {
                 userGuess = event.key;
+                
+                $("#guessnum").html(guessCountdown);
+                Guesses.push(userGuess);
                 $("#yourguesses").append(userGuess + " ");
-                console.log(userGuess);
-                return (userGuess);
+                console.log(Guesses);
+
+                if (Guesses.length == 10) {
+                    console.log("No match. Round over.");
+                    lossScore++;
+                    $("#lossscore").html(lossScore);
+                    Guesses = [];
+                    console.log(Guesses);
+                    $("#yourguesses").empty();
+                    guessCountdown = 10;
+                }
+                else if (userGuess == compGuess) {
+                    console.log("Winning");
+                    winScore++;
+                }
             }
 
-          
 
-        });
+        })
+
+
+
 
 
             // if they type something not a letter they should get an alert

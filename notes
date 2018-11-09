@@ -1,0 +1,31 @@
+
+
+
+ Why is the else below not ok????
+
+    document.onkeyup = function (event) {
+       
+    var userGuess = event.key;
+        
+        if ("userGuess" == ("a" || "b" || "c" || "d" || "e" || "f" || "g" || "h" || "i" || "j" || "k" || "l" || "m" || "n" || "o" || "p")); {
+        
+         $("#yourguesses").append(userGuess + " ");
+              console.log("userGuess");
+           }
+              else {
+              alert("This game recognizes only letters. Please choose a new letter.");
+          }
+
+
+
+
+            var guess = document.onkeypress = function (event) {
+            $("#guessnum").html(guessCountdown--);
+            if (guessCountdown <= -1) {
+                alert("Round over. +1 Loss.");
+            }
+            userGuess = event.key;
+            $("#yourguesses").append(userGuess + " ");
+            console.log(userGuess);
+            return (userGuess);
+        }
