@@ -61,4 +61,5 @@ document.onkeydown = function(event) {
     document.querySelector("#losses").innerHTML = losses;
     reset();
   }
+
 };
