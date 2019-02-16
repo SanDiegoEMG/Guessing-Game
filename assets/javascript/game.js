@@ -112,6 +112,7 @@ document.onkeydown = function(event) {
     losses++;
     document.querySelector("#losses").innerHTML = losses;
     $("#playagain").show();
+    alert("Not at your most clairvoyant ... try again?")
   }
 
   for (let i = 0; i < guessedLetters.length; i++) {
