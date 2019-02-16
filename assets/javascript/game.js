@@ -11,9 +11,6 @@ var guessesLeft = 10;
 var wins = 0;
 var losses = 0;
 
-var updateGuessesLeft = function() {
-  document.querySelector("#guesses-left").text = guessesLeft;
-};
 
 var updateLetterToGuess = function() {
   letterToGuess = letters[Math.floor(Math.random() * letters.length)];
@@ -24,8 +21,13 @@ var updateGuessesSoFar = function() {
   document.querySelector("#guesses-so-far").innerHTML = guessedLetters.join(", ");
 };
 
+var updateGuessesLeft = function() {
+  document.querySelector("#guesses-left").innerHTML = guessesLeft;
+};
+
+
 var reset = function() {
-  // guessesLeft = 9;
+  guessesLeft = 9;
   guessedLetters = [];
   updateLetterToGuess();
   updateGuessesLeft();
@@ -33,7 +35,7 @@ var reset = function() {
 };
 
 updateLetterToGuess();
-updateGuessesLeft();
+// updateGuessesLeft();
 
 // This function captures keyboard clicks.
 document.onkeydown = function(event) {
